@@ -493,6 +493,22 @@ export default function App() {
           </label>
 
           <button 
+            className="btn btn-secondary" 
+            onClick={() => {
+              if (window.confirm('Are you sure you want to clear all work logs and start fresh?')) {
+                setLogs([]);
+                localStorage.setItem(STORAGE_KEY, JSON.stringify([]));
+                showToast('All logs cleared. Ready for your actual work!');
+              }
+            }}
+            title="Clear all logs and start fresh"
+            style={{ color: '#f87171' }}
+          >
+            <Trash2 size={16} />
+            <span>Clear All</span>
+          </button>
+
+          <button 
             className="btn-icon" 
             onClick={() => setTheme(t => t === 'dark' ? 'light' : 'dark')}
             title="Toggle Light / Dark mode"
